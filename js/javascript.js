@@ -1,0 +1,40 @@
+"use strict";
+
+var magicTexts = [
+    'Geh du alter Esel! Hole Fische!',
+    'Kuno fand beim Essen Astern des Gesandten Cäsar.',
+    'Ein Neger mit Gazelle zagt im Regen nie.'
+];
+
+
+(function () {
+    var fadeTimeInMillis = 2000,
+        presentationTimeInMillis = 3000,
+        $textbox = jQuery("#textbox"),
+        magicTextsLength = magicTexts.length;
+
+    // Executes the fade in fade out cycles including text population
+    function nextCycle(i) {
+        // put text in text box
+        $textbox.text(magicTexts[i]);
+
+        $textbox.fadeIn(fadeTimeInMillis);
+
+        // schedule fade out
+        setTimeout(function () {
+            $textbox.fadeOut(fadeTimeInMillis);
+        }, presentationTimeInMillis + fadeTimeInMillis);
+
+        // schedule next cycle if further text is available
+        setTimeout(function () {
+            if (i + 1 < magicTextsLength) {
+                nextCycle(i + 1)
+            }
+        }, presentationTimeInMillis + 2 * fadeTimeInMillis);
+    }
+
+    if (magicTextsLength > 0) {
+        // Go for gold ;-)
+        nextCycle(0);
+    }
+})();
