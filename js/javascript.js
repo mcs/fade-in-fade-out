@@ -1,16 +1,15 @@
 "use strict";
 
-var magicTexts = [
-    'Geh du alter Esel! Hole Fische!',
-    'Kuno fand beim Essen Astern des Gesandten Cäsar.',
-    'Ein Neger mit Gazelle zagt im Regen nie.'
-];
-
-
-(function () {
+(function ($) {
     var fadeTimeInMillis = 2000,
         presentationTimeInMillis = 3000,
-        $textbox = jQuery("#textbox"),
+        $textbox = $("#textbox"),
+        // magic texts should probably be retrieved from any external service / repository
+        magicTexts = [
+            'Geh du alter Esel! Hole Fische!',
+            'Kuno fand beim Essen Astern des Gesandten Cäsar.',
+            'Ein Neger mit Gazelle zagt im Regen nie.'
+        ],
         magicTextsLength = magicTexts.length;
 
     // Executes the fade in fade out cycles including text population
@@ -37,4 +36,4 @@ var magicTexts = [
         // Go for gold ;-)
         nextCycle(0);
     }
-})();
+})(jQuery);
