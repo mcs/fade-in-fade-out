@@ -1,8 +1,8 @@
 "use strict";
 
 (function ($) {
-    var fadeTimeInMillis = 2000,
-        presentationTimeInMillis = 3000,
+    var fadeTimeInMillis = 1000,
+        presentationTimeInMillis = 1000,
         $textbox = $("#textbox"),
         // magic texts should probably be retrieved from any external service / repository
         magicTexts = [
@@ -28,6 +28,10 @@
         setTimeout(function () {
             if (i + 1 < magicTextsLength) {
                 nextCycle(i + 1)
+            } else {
+                // called at the end of the cycles
+                $(".enlightened").fadeIn(5000);
+                $(".resistance").fadeOut(5000);
             }
         }, presentationTimeInMillis + 2 * fadeTimeInMillis);
     }
